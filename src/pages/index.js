@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import Board from '../Components/Board'
+import Game from '../Components/Game'
 
 export default function Home() {
   return (
     <>
-      <Board />
+      <Game />
     </>
   )
 }
