@@ -1,7 +1,7 @@
-function Square () {
+function Square (props) {
     return(
-        <button>
-            x
+        <button onClick={props.onClick}>
+            {props.value}
         </button>
     )
 }
