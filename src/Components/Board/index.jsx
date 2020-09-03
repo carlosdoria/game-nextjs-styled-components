@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-import Square from '../Square'
+import Square from '../Square';
+import * as S from './styles';
 
 function Board (props) {
     function renderSquare (i) {
             return(
-                <Square 
+                <Square
                     value={props.value[i]}
                     onClick={() => props.onClick(i)}
                 />
@@ -13,42 +14,24 @@ function Board (props) {
     }
 
     return(
-        <div>
-            <div>
+        <S.Wapper>
+            <S.Row>
                 {renderSquare(0)}
                 {renderSquare(1)}
                 {renderSquare(2)}
-            </div>
-            <div>
+            </S.Row>
+            <S.Row>
                 {renderSquare(3)}
                 {renderSquare(4)}
                 {renderSquare(5)}
-            </div>
-            <div>
+            </S.Row>
+            <S.Row>
                 {renderSquare(6)}
                 {renderSquare(7)}
                 {renderSquare(8)}
-            </div>
-        </div>
+            </S.Row>
+        </S.Wapper>
     );
 }
 
 export default Board
-
-{/* <>
-<div>
-    <Square onClick={() => props.click(0)} value={props.valueSquare[0]}/>
-    <Square onClick={() => props.click(1)} value={props.valueSquare[1]}/>
-    <Square onClick={() => props.click(2)} value={props.valueSquare[2]}/>
-</div>
-<div>
-    <Square />
-    <Square />
-    <Square />
-</div>
-<div>
-    <Square />
-    <Square />
-    <Square />
-</div>
-</> */}

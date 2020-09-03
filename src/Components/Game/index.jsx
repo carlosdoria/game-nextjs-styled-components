@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 import Board from '../Board';
+import * as S from './styles';
 
 function Game () {
     // state created to store the value of Squares
     const [squaresBoard, setSquaresBoard] = useState(Array(9).fill(null));
     // state created to check whose is the move ('X' or 'O')
     const [xIsNext, setXIsNext] = useState(true);
+    // state created to check status of the game
     const [statusGame, setStatusGame] = useState('Next Player: X');
 
     function handleClick(index){
@@ -30,21 +32,21 @@ function Game () {
         setXIsNext(true);
         setStatusGame('Next Player: X')
     }
-    
+
     return(
-        <div>
-            <h1>    
+        <S.Container>
+            <h1>
                 Tic-Tac-Toe Game
             </h1>
             <h2>
                 {statusGame}
             </h2>
-            <Board 
+            <Board
                 value={squaresBoard}
                 onClick={(i) => handleClick(i)}
             />
-            <button onClick={() => resetSquares()}>Reset</button>
-        </ div>
+            <S.Button onClick={() => resetSquares()}>Reset</S.Button>
+        </ S.Container>
     )
 }
 
