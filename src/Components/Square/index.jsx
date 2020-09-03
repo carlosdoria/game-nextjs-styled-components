@@ -1,9 +1,11 @@
+import * as S from './styles'
+
 function Square (props) {
-    return(
-        <button onClick={props.onClick}>
-            {props.value}
-        </button>
-    )
+  return(
+    <S.Button onClick={props.onClick}>
+      {props.value}
+    </S.Button>
+  )
 }
 
 export default Square
