@@ -4,25 +4,26 @@ import Board from '../Board';
 import * as S from './styles';
 
 function Game () {
-    // state created to store the value of Squares
+    // created to store the value of Squares
     const [squaresBoard, setSquaresBoard] = useState(Array(9).fill(null));
-    // state created to check whose is the move ('X' or 'O')
+    // check whose is the next player ('X' or 'O')
     const [xIsNext, setXIsNext] = useState(true);
-    // state created to check status of the game
+    // responsible for reporting the status of the game
     const [statusGame, setStatusGame] = useState();
 
     function handleClick(index){
       const square = squaresBoard
-      // check to the value of the array object is null
+      // check if there is a winner or if the Square value is already filled
       if (calculateWinner(squaresBoard) || square[index] != null) {return}
       // check who the next player is and print wour move
       square[index] = xIsNext ? 'X' : 'O'
       setSquaresBoard(square);
       // updates the status of the next player
       setXIsNext(!xIsNext);
+      console.log(squaresBoard)
     }
 
-    function resetSquares() {
+    function resetGame() {
       setSquaresBoard(Array(9).fill(null));
       setXIsNext(true);
     }
@@ -56,7 +57,7 @@ function Game () {
       } else {
         setStatusGame(`Next Player: ${xIsNext ? 'X' : 'O'}`)
       }
-    }, [xIsNext])
+    }, [xIsNext, resetGame])
 
     return(
       <S.Container>
@@ -70,7 +71,7 @@ function Game () {
           value={squaresBoard}
           onClick={(i) => handleClick(i)}
           />
-        <S.Button onClick={() => resetSquares()}>Reset</S.Button>
+        <S.Button onClick={() => resetGame()}>Reset</S.Button>
       </ S.Container>
     )
 }
