@@ -11,7 +11,7 @@ export const Button = styled.button`
   border: 1px solid #999;
   outline: none;
   cursor: pointer;
-  &:active, &:hover {
+  &:hover, &:active {
     color: red;
     /* cursor: auto; */
   }
