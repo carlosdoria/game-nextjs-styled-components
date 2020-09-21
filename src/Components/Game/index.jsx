@@ -13,20 +13,12 @@ function Game () {
 
     function handleClick(index){
       const square = squaresBoard
-      // if created to check if the value of the array object is null
-      if (square[index] != null) {return}
-
+      // check to the value of the array object is null
+      if (calculateWinner(squaresBoard) || square[index] != null) {return}
+      // check who the next player is and print wour move
       square[index] = xIsNext ? 'X' : 'O'
-
-      if (squaresBoard.every(element => element != null)){
-        setStatusGame('Match drawn')
-      } else if (xIsNext === true) {
-        setStatusGame('Next Player: O')
-      } else if (xIsNext === false) {
-        setStatusGame('Next Player: X')
-      }
-
       setSquaresBoard(square);
+      // updates the status of the next player
       setXIsNext(!xIsNext);
     }
 
@@ -60,8 +52,15 @@ function Game () {
       const winner = calculateWinner(squaresBoard)
       if (winner) {
         setStatusGame(`${winner} is the winner`)
+      } else if (squaresBoard.every(element => element != null)){
+        setStatusGame('Match drawn')
+      } else if (xIsNext === true) {
+        setStatusGame('Next Player: X')
+      } else if (xIsNext === false) {
+        setStatusGame('Next Player: O')
       }
     }, [xIsNext])
+
     return(
       <S.Container>
         <h1>
