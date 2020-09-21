@@ -9,7 +9,7 @@ function Game () {
     // state created to check whose is the move ('X' or 'O')
     const [xIsNext, setXIsNext] = useState(true);
     // state created to check status of the game
-    const [statusGame, setStatusGame] = useState('Next Player: X');
+    const [statusGame, setStatusGame] = useState();
 
     function handleClick(index){
       const square = squaresBoard
@@ -25,7 +25,6 @@ function Game () {
     function resetSquares() {
       setSquaresBoard(Array(9).fill(null));
       setXIsNext(true);
-      setStatusGame('Next Player: X')
     }
 
     function calculateWinner(squares) {
@@ -54,10 +53,8 @@ function Game () {
         setStatusGame(`${winner} is the winner`)
       } else if (squaresBoard.every(element => element != null)){
         setStatusGame('Match drawn')
-      } else if (xIsNext === true) {
-        setStatusGame('Next Player: X')
-      } else if (xIsNext === false) {
-        setStatusGame('Next Player: O')
+      } else {
+        setStatusGame(`Next Player: ${xIsNext ? 'X' : 'O'}`)
       }
     }, [xIsNext])
 
