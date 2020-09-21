@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Square from '../Square';
 import * as S from './styles';
 
