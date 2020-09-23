@@ -6,6 +6,10 @@ import * as S from './styles';
 function Game () {
     // created to store the value of Squares
     const [squaresBoard, setSquaresBoard] = useState(Array(9).fill(null));
+    // const [squaresBoard, setSquaresBoard] = useState([{
+    //   board: Array(9).fill(null)
+    // }]);
+    const [playHistory, setPlayHistory] = useState([])
     // check whose is the next player ('X' or 'O')
     const [xIsNext, setXIsNext] = useState(true);
     // responsible for reporting the status of the game
@@ -14,18 +18,19 @@ function Game () {
     function handleClick(index){
       const square = squaresBoard
       // check if there is a winner or if the Square value is already filled
-      if (calculateWinner(squaresBoard) || square[index] != null) {return}
+      if (calculateWinner(square) || square[index] != null) {return}
       // check who the next player is and print wour move
       square[index] = xIsNext ? 'X' : 'O'
-      setSquaresBoard(square);
+      // save current move in history. Slice was used so that state 'playHistory' did not keep updating the 'square' within it
+      setPlayHistory([...playHistory, square.slice()]);
       // updates the status of the next player
       setXIsNext(!xIsNext);
-      console.log(squaresBoard)
     }
 
     function resetGame() {
       setSquaresBoard(Array(9).fill(null));
       setXIsNext(true);
+      setPlayHistory([])
     }
 
     function calculateWinner(squares) {
