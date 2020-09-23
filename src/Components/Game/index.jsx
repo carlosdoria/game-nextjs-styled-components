@@ -61,9 +61,9 @@ function Game () {
 
     return(
       <S.Container>
-        <h1>
+        <S.Title>
           Tic-Tac-Toe Game
-        </h1>
+        </S.Title>
         <h2>
           {statusGame}
         </h2>
