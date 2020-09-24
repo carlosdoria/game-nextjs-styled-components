@@ -27,13 +27,13 @@ function Game () {
       setXIsNext(!xIsNext);
     }
 
-    function resetGame() {
+    function resetGame () {
       setSquaresBoard(Array(9).fill(null));
       setXIsNext(true);
       setPlayHistory([])
     }
 
-    function calculateWinner(squares) {
+    function calculateWinner (squares) {
       const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -53,7 +53,13 @@ function Game () {
       return null;
     }
 
-    useEffect(() => {
+    function returnMove (index) {
+      const move = playHistory
+      setSquaresBoard(move[index])
+      console.log('rodei')
+    }
+
+    useEffect (() => {
       const winner = calculateWinner(squaresBoard)
       if (winner) {
         setStatusGame(`${winner} is the winner`)
@@ -76,6 +82,14 @@ function Game () {
           value={squaresBoard}
           onClick={(i) => handleClick(i)}
           />
+          {playHistory.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => returnMove(index)}
+              >
+              Jogada #{index +1}
+            </button>
+          ))}
         <S.Button onClick={() => resetGame()}>Reset</S.Button>
       </ S.Container>
     )
