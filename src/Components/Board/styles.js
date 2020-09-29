@@ -14,4 +14,5 @@ export const Row = styled.div`
   padding: 0;
   line-height: 0;
   display: flex;
+  flex-wrap: wrap;
 `;

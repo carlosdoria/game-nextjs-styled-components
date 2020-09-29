@@ -6,9 +6,7 @@ import * as S from './styles';
 function Game () {
     // created to store the value of Squares
     const [squaresBoard, setSquaresBoard] = useState(Array(9).fill(null));
-    // const [squaresBoard, setSquaresBoard] = useState([{
-    //   board: Array(9).fill(null)
-    // }]);
+    // save play history
     const [playHistory, setPlayHistory] = useState([])
     // check whose is the next player ('X' or 'O')
     const [xIsNext, setXIsNext] = useState(true);
@@ -91,6 +89,8 @@ function Game () {
             </button>
           ))}
         <S.Button onClick={() => resetGame()}>Reset</S.Button>
+        <S.Button onClick={() => console.log(squaresBoard)}>Show Squares</S.Button>
+        <S.Button onClick={() => console.log(playHistory)}>Show history</S.Button>
       </ S.Container>
     )
 }
