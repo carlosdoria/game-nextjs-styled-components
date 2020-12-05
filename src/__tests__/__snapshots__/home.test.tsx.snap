@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> should render the heading 1`] = `
+.c0 {
+  color: purple;
+}
+
+.c0 h1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: blue;
+}
+
+<main
+  class="c0"
+>
+  <h1>
+    My boilerplate
+  </h1>
+  <h2>
+    First boilerplate
+  </h2>
+</main>
+`;

@@ -5,16 +5,15 @@ function Board (props) {
 
   const squares = props.value
 
-  const renderSquares = squares.map((_, index) =>
-    <Square
-      value={squares[index]}
-      onClick={() => props.onClick(index)} />
-  )
-
   return(
     <S.Wapper>
       <S.Row>
-        {renderSquares}
+        {squares.map((value, index) =>
+          <Square
+            key={index}
+            value={value}
+            onClick={() => props.onClick(index)} />
+        )}
       </S.Row>
     </S.Wapper>
   );
